@@ -39,8 +39,9 @@
     <Reference Include="Keyboard">
       <HintPath>..\TemplateV2\Template\GJSControl\GJSDLL\Keyboard.dll</HintPath>
     </Reference>
-    <Reference Include="Log">
-      <HintPath>..\TemplateV2\Template\GJSControl\GJSDLL\Log.dll</HintPath>
+    <Reference Include="Log, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Log.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

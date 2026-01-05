@@ -1,5 +1,4 @@
 ﻿using CommonLibrary;
-using Keyboard;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using FileStreamLibrary;
 
 namespace nsUI
 {
@@ -32,6 +31,7 @@ namespace nsUI
         private int Residue;
         private string _LogPath = "C:\\Log";
         private Keyboard.NumKeyboard _keyboard;
+        private bool _UMTC_LuZhu = false;
 
         public FmLogData_REC()
         {
@@ -39,6 +39,10 @@ namespace nsUI
             FmBtnClickEvnet(this);
             _keyboard = new Keyboard.NumKeyboard();
 
+            IniFile ini = new IniFile("C:\\Log\\Log.ini", true);
+            _UMTC_LuZhu = ini.ReadBool("System", "UMTC_LuZhu", false);
+            ini.FileClose();
+            ini.Dispose();
             RefreshUI();
 
             
@@ -243,7 +247,10 @@ namespace nsUI
                     {
                         if (i < DGV_LogData.RowCount)
                         {
-                            _strarr = Regex.Split(FilteredLogFileDataArr[i], "---");
+                            if(_UMTC_LuZhu)
+                                _strarr = Regex.Split(FilteredLogFileDataArr[i], ",");
+                            else
+                                _strarr = Regex.Split(FilteredLogFileDataArr[i], "---");
                             if(_strarr[0].Length > 24)
                                 _strarr[0] = _strarr[0].Substring(11, 13);
 
@@ -282,7 +289,10 @@ namespace nsUI
             {
                 if (i < ReadCountNum)
                 {
-                    _strarr = Regex.Split(FilteredLogFileDataArr[i], "---");
+                    if (_UMTC_LuZhu)
+                        _strarr = Regex.Split(FilteredLogFileDataArr[i], ",");
+                    else
+                        _strarr = Regex.Split(FilteredLogFileDataArr[i], "---");
                     if (_strarr[0].Length > 24)
                         _strarr[0] = _strarr[0].Substring(11, 13);
 
@@ -353,7 +363,12 @@ namespace nsUI
             {
                 for (int i = 0; i < LogFileDataArr.Length; i++)
                 {
-                    string[] strArray = Regex.Split(LogFileDataArr[i], "---");
+                    string[] strArray;
+                    if (_UMTC_LuZhu)
+                        strArray = Regex.Split(FilteredLogFileDataArr[i], ",");
+                    else
+                        strArray = Regex.Split(LogFileDataArr[i], "---");
+
                     if (CB_Mode.SelectedIndex == 0 || (strArray != null && strArray.Length > 1 && CB_Mode.Text.ToLower() == strArray[1].ToLower()))
                     {
                         if (NumUD_StartH.Value <= NumUD_EndH.Value)
@@ -430,7 +445,11 @@ namespace nsUI
 
             for(int i = 0; i < LogFileDataArr.Length; i++)
             {
-                string[] data = Regex.Split(LogFileDataArr[i], "---");
+                string[] data;
+                if (_UMTC_LuZhu)
+                    data = Regex.Split(FilteredLogFileDataArr[i], ",");
+                else
+                    data = Regex.Split(LogFileDataArr[i], "---");
 
                 if (data.Length > 1)
                 {
