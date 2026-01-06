@@ -124,7 +124,7 @@
   <data name="BtnSync.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAVBSURBVGhD7VpJ
+        vQAADr0BR/uQrQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAVBSURBVGhD7VpJ
         ix1VFH6J4ADObdu+qvt9p+r5UGwcYgQj4sKIcSnOI+oiulFRo6Arp/gHNCS6cMalYzCJQ1QSDO7FJrpQ
         ohKNiokDRGw1UY7cgvK8ml+9Tl7bHxy6ut49w3fnOvd2OgtYwP8XURSJiFxI8iYAq0g+SPIhAPc4566L
         omhZEAQTVu+ghYgcS/JKEXmG5AyA30Xk7yiKMkV/I7mb5Ack74/j+BRrswxxHK+IougS+75VOOdOF5E1
@@ -156,7 +156,7 @@
   <data name="BtnFolder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKsSURBVGhD7Zo5
+        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKsSURBVGhD7Zo5
         y9VAFIYfF3DHBbFxbbS0E7USRBE7wbVQG/UPCOLSCWKthVh8jQiCa6mF2IkICoKNG6KCG4raCG4gygsJ
         fBxOksm9ifcE88Db3Ds5c947yZk7M4Genp6ennaZBsxN0Bx7YWQmA/uBm8Br4HOi7gIbbLBoLAfuAX+G
         0Clgpg0cgUXZiNmEB9FjYKPtYNTccBIdVqejjOYqJznpIXAFuFwiff/RuTaXRnMfsA3YXlObgGU22UE4
@@ -207,9 +207,6 @@
   <metadata name="Lbl_To.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="BtnReturn.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="GB_ReplayTimeRange.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -223,9 +220,6 @@
     <value>True</value>
   </metadata>
   <metadata name="Lbl_ReplayTo.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="BtnReplay.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="CB_Mode.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

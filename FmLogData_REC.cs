@@ -40,7 +40,6 @@ namespace nsUI
             _keyboard = new Keyboard.NumKeyboard();
 
             IniFile ini = new IniFile("C:\\Log\\Log.ini", true);
-            _UMTC_LuZhu = ini.ReadBool("System", "UMTC_LuZhu", false);
             ini.FileClose();
             ini.Dispose();
             RefreshUI();
@@ -365,7 +364,7 @@ namespace nsUI
                 {
                     string[] strArray;
                     if (_UMTC_LuZhu)
-                        strArray = Regex.Split(FilteredLogFileDataArr[i], ",");
+                        strArray = Regex.Split(LogFileDataArr[i], ",");
                     else
                         strArray = Regex.Split(LogFileDataArr[i], "---");
 
@@ -431,6 +430,11 @@ namespace nsUI
 
 
             string sNodePath = e.Node.Tag.ToString();
+            if (sNodePath.IndexOf("UMTC_LuZhu") > 0)
+                _UMTC_LuZhu = true;
+            else
+                _UMTC_LuZhu = false;
+
             LogFileDataArr = Read(sNodePath);
             Array.Reverse(LogFileDataArr);
             if (LogFileDataArr == null)
@@ -447,7 +451,7 @@ namespace nsUI
             {
                 string[] data;
                 if (_UMTC_LuZhu)
-                    data = Regex.Split(FilteredLogFileDataArr[i], ",");
+                    data = Regex.Split(LogFileDataArr[i], ",");
                 else
                     data = Regex.Split(LogFileDataArr[i], "---");
 

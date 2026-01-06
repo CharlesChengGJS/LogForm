@@ -50,7 +50,6 @@
             this.NumUD_ReplayM = new System.Windows.Forms.NumericUpDown();
             this.NumUD_ReplayH = new System.Windows.Forms.NumericUpDown();
             this.Lbl_ReplayTo = new System.Windows.Forms.Label();
-            this.BtnReplay = new System.Windows.Forms.Button();
             this.CB_Mode = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_LogData)).BeginInit();
             this.GB_TimeRange.SuspendLayout();
@@ -245,10 +244,10 @@
             // BtnReturn
             // 
             this.BtnReturn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnReturn.Location = new System.Drawing.Point(10, 711);
+            this.BtnReturn.Location = new System.Drawing.Point(10, 653);
             this.BtnReturn.Margin = new System.Windows.Forms.Padding(1);
             this.BtnReturn.Name = "BtnReturn";
-            this.BtnReturn.Size = new System.Drawing.Size(140, 45);
+            this.BtnReturn.Size = new System.Drawing.Size(140, 56);
             this.BtnReturn.TabIndex = 48;
             this.BtnReturn.Text = "返回";
             this.BtnReturn.UseVisualStyleBackColor = true;
@@ -317,19 +316,6 @@
             this.Lbl_ReplayTo.TabIndex = 59;
             this.Lbl_ReplayTo.Text = "~";
             // 
-            // BtnReplay
-            // 
-            this.BtnReplay.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.BtnReplay.Location = new System.Drawing.Point(10, 653);
-            this.BtnReplay.Margin = new System.Windows.Forms.Padding(1);
-            this.BtnReplay.Name = "BtnReplay";
-            this.BtnReplay.Size = new System.Drawing.Size(140, 45);
-            this.BtnReplay.TabIndex = 73;
-            this.BtnReplay.Text = "播放";
-            this.BtnReplay.UseVisualStyleBackColor = true;
-            this.BtnReplay.Visible = false;
-            this.BtnReplay.Click += new System.EventHandler(this.BtnReplay_Click);
-            // 
             // CB_Mode
             // 
             this.CB_Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -347,7 +333,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 766);
-            this.Controls.Add(this.BtnReplay);
             this.Controls.Add(this.GB_ReplayTimeRange);
             this.Controls.Add(this.GB_TimeRange);
             this.Controls.Add(this.CB_Mode);
@@ -397,7 +382,6 @@
         private System.Windows.Forms.Label Lbl_To;
         private System.Windows.Forms.Button BtnReturn;
         private System.Windows.Forms.GroupBox GB_ReplayTimeRange;
-        private System.Windows.Forms.Button BtnReplay;
         private System.Windows.Forms.NumericUpDown NumUD_ReplayM;
         private System.Windows.Forms.NumericUpDown NumUD_ReplayH;
         private System.Windows.Forms.Label Lbl_ReplayTo;
