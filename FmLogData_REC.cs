@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using FileStreamLibrary;
+using System.Threading.Tasks;
 
 namespace nsUI
 {
@@ -227,53 +228,59 @@ namespace nsUI
 
       
 
-        private void DGV_LogData_Scroll(object sender, ScrollEventArgs e)
+        private async void DGV_LogData_Scroll(object sender, ScrollEventArgs e)
         {
-            if (e.NewValue + DGV_LogData.DisplayedRowCount(false) >= DGV_LogData.RowCount)
+            await Task.Run(() =>
             {
-                if (FilteredLogFileDataArr.Length != 0)
+                this.Invoke(new Action(() =>
                 {
-                    string[] _strarr;
-                    int ResidueBuf = DGV_LogData.RowCount % ReadCountNum;
-                    int SegmentBuf = (DGV_LogData.RowCount - ResidueBuf) / ReadCountNum;
-
-                    if (DGV_LogData.RowCount + ReadCountNum > FilteredLogFileDataArr.Length)
-                        DGV_LogData.RowCount = FilteredLogFileDataArr.Length;
-                    else
-                        DGV_LogData.RowCount += ReadCountNum;
-
-                    for (int i = (SegmentBuf * ReadCountNum + ResidueBuf - 1); i < Segment * ReadCountNum + Residue; i++)
+                    if (e.NewValue + DGV_LogData.DisplayedRowCount(false) >= DGV_LogData.RowCount)
                     {
-                        if (i < DGV_LogData.RowCount)
+                        if (FilteredLogFileDataArr.Length != 0)
                         {
-                            if(_UMTC_LuZhu)
-                                _strarr = Regex.Split(FilteredLogFileDataArr[i], ",");
-                            else
-                                _strarr = Regex.Split(FilteredLogFileDataArr[i], "---");
-                            if(_strarr[0].Length > 24)
-                                _strarr[0] = _strarr[0].Substring(11, 13);
+                            string[] _strarr;
+                            int ResidueBuf = DGV_LogData.RowCount % ReadCountNum;
+                            int SegmentBuf = (DGV_LogData.RowCount - ResidueBuf) / ReadCountNum;
 
-                            for (int j = 0; j < DGV_LogData.Rows[i].Cells.Count; j++)
+                            if (DGV_LogData.RowCount + ReadCountNum > FilteredLogFileDataArr.Length)
+                                DGV_LogData.RowCount = FilteredLogFileDataArr.Length;
+                            else
+                                DGV_LogData.RowCount += ReadCountNum;
+
+                            for (int i = (SegmentBuf * ReadCountNum + ResidueBuf - 1); i < Segment * ReadCountNum + Residue; i++)
                             {
-                                if(_strarr.Length > j)
-                                    DGV_LogData.Rows[i].Cells[j].Value = _strarr[j];
-                            }
-                            for (int j = DGV_LogData.Rows[i].Cells.Count; j < _strarr.Length; j++)
-                            {
-                                if (_strarr.Length > j)
-                                    DGV_LogData.Rows[i].Cells[DGV_LogData.Rows[i].Cells.Count - 1].Value += _strarr[j];
+                                if (i < DGV_LogData.RowCount)
+                                {
+                                    if (_UMTC_LuZhu)
+                                        _strarr = Regex.Split(FilteredLogFileDataArr[i], ",");
+                                    else
+                                        _strarr = Regex.Split(FilteredLogFileDataArr[i], "---");
+                                    if (_strarr[0].Length > 24)
+                                        _strarr[0] = _strarr[0].Substring(11, 13);
+
+                                    for (int j = 0; j < DGV_LogData.Rows[i].Cells.Count; j++)
+                                    {
+                                        if (_strarr.Length > j)
+                                            DGV_LogData.Rows[i].Cells[j].Value = _strarr[j];
+                                    }
+                                    for (int j = DGV_LogData.Rows[i].Cells.Count; j < _strarr.Length; j++)
+                                    {
+                                        if (_strarr.Length > j)
+                                            DGV_LogData.Rows[i].Cells[DGV_LogData.Rows[i].Cells.Count - 1].Value += _strarr[j];
+                                    }
+                                }
+                                else
+                                    break;
                             }
                         }
-                        else
-                            break;
                     }
-                }
-            }
 
-            CB_Mode.Location = new Point(DGV_LogData.Location.X + DGV_LogData.Columns[0].Width + 1, DGV_LogData.Location.Y + 1);//更新控件位置
-            CB_Mode.Width = DGV_LogData.Columns[1].Width;//設定控件寬度
-            CB_Mode.Visible = true;
-            CB_Mode.BringToFront();//控件移至最頂層
+                    CB_Mode.Location = new Point(DGV_LogData.Location.X + DGV_LogData.Columns[0].Width + 1, DGV_LogData.Location.Y + 1);//更新控件位置
+                    CB_Mode.Width = DGV_LogData.Columns[1].Width;//設定控件寬度
+                    CB_Mode.Visible = true;
+                    CB_Mode.BringToFront();//控件移至最頂層
+                }));
+            });
         }
 
         private void ShowDataToViewLog()

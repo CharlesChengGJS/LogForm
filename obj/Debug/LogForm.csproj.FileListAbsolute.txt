@@ -11,3 +11,4 @@ D:\Work\Git\Organization\LogForm\bin\Debug\Keyboard.dll
 D:\Work\Git\Organization\LogForm\obj\Debug\LogForm.csproj.Up2Date
 D:\Work\Git\Organization\LogForm\obj\Debug\LogForm.exe
 D:\Work\Git\Organization\LogForm\obj\Debug\LogForm.pdb
+D:\Work\Git\Organization\LogForm\obj\Debug\LogForm.exe.config
